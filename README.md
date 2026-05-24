@@ -1,136 +1,259 @@
 # SemanticVault
 
-> Full-stack AI-powered semantic search and Retrieval-Augmented Generation (RAG) platform built with FastAPI, HNSW vector search, and Ollama LLMs.
+> Full-stack AI-powered semantic search and Retrieval-Augmented Generation (RAG) platform built with FastAPI, HNSW vector search, Ollama LLMs, and interactive vector visualization.
+
+![SemanticVault Preview](./preview.png)
 
 ---
 
-## 🚀 Project Overview
+# 📌 Overview
 
-SemanticVault is a local-first AI knowledge retrieval system that enables semantic document search, vector similarity matching, and AI-powered question answering using Retrieval-Augmented Generation (RAG).
-
-The system combines:
+SemanticVault is a local-first AI knowledge retrieval engine that combines:
 
 * Vector databases
-* Approximate nearest neighbor search (HNSW)
-* Embedding models
-* Local LLM inference
+* Semantic similarity search
+* HNSW indexing
+* Retrieval-Augmented Generation (RAG)
 * Interactive vector visualization
+* Local LLM inference with Ollama
 
-to create a fully functional semantic AI platform.
+The project demonstrates how modern AI search systems like Pinecone, Weaviate, Chroma, and Perplexity-style retrieval systems work internally.
 
----
-
-## ✨ Features
-
-### 🔍 Semantic Search
-
-* Search documents based on meaning instead of keywords
-* Cosine similarity vector retrieval
-* Configurable top-k nearest neighbor search
-
-### 🧠 RAG (Retrieval-Augmented Generation)
-
-* Ask questions grounded in uploaded documents
-* Context-aware AI responses using local LLMs
-* Automatic context retrieval and ranking
-
-### ⚡ HNSW Vector Database
-
-* High-performance ANN search using HNSWLIB
-* Efficient vector indexing and retrieval
-* Real-time similarity matching
-
-### 📊 Vector Space Visualization
-
-* Interactive 2D PCA projection of embeddings
-* Real-time scatter plot visualization
-* Query vector highlighting and distance mapping
-
-### 🛠 Smart Fallback System
-
-* Graceful degradation when Ollama is unavailable
-* Local fallback embeddings generation
-* Robust error handling and diagnostics
-
-### 📁 Document Management
-
-* Insert, delete, and list documents
-* Metadata previews and word counts
-* Semantic embedding storage
+Built entirely using Python, FastAPI, HNSWLIB, JavaScript Canvas, and Ollama.
 
 ---
 
-## 🏗️ Tech Stack
+# ✨ Features
 
-### Backend
+| Feature                | Description                                     |
+| ---------------------- | ----------------------------------------------- |
+| 🔍 Semantic Search     | Search by meaning instead of keywords           |
+| 🧠 RAG Pipeline        | Ask AI questions grounded in your own documents |
+| ⚡ HNSW Search          | Production-style ANN vector retrieval           |
+| 📊 PCA Visualization   | Real-time 2D vector space projection            |
+| 🤖 Ollama Integration  | Local embeddings + local LLM responses          |
+| 📁 Document Management | Insert, list, and delete semantic documents     |
+| 📈 Benchmarking        | Compare HNSW, KD-Tree, and Brute Force          |
+| 🛡 Graceful Fallbacks  | Works even when Ollama is unavailable           |
+| 🌐 REST API            | Full backend API for vectors and RAG            |
+| 🎨 Interactive UI      | Modern AI dashboard with semantic visualization |
 
-* Python
-* FastAPI
-* hnswlib
-* NumPy
+---
 
-### AI / ML
+# 🧠 How It Works
 
-* Ollama
-* `nomic-embed-text`
-* `llama3.2`
+```text
+Your Query
+    │
+    ▼
+Embedding Generation (nomic-embed-text)
+    │
+    ▼
+HNSW Vector Search
+    │
+    ▼
+Top-K Semantic Context Retrieval
+    │
+    ▼
+Prompt Construction
+    │
+    ▼
+LLM Generation (llama3.2)
+    │
+    ▼
+AI Response
+```
 
-### Frontend
+---
+
+# 🏗️ Technical Architecture
+
+## Backend (Python + FastAPI)
+
+SemanticVault uses a REST-based backend built with FastAPI.
+
+### Core Backend Features
+
+* FastAPI server architecture
+* RESTful API endpoints
+* HNSW vector indexing using HNSWLIB
+* Semantic similarity search
+* Document chunk retrieval
+* Local embedding generation
+* AI response generation
+* Robust error handling
+* Benchmarking APIs
+* Real-time vector insertion
+
+---
+
+## Vector Database & Search
+
+### HNSW (Hierarchical Navigable Small World)
+
+The project uses HNSWLIB for fast approximate nearest neighbor search.
+
+Features:
+
+* Cosine similarity search
+* Efficient ANN retrieval
+* Configurable top-k search
+* Real-time insertion
+* Logarithmic retrieval complexity
+
+### Additional Algorithms
+
+SemanticVault also includes:
+
+* KD-Tree search
+* Brute Force search
+
+for benchmarking and algorithm comparison.
+
+---
+
+## RAG Pipeline
+
+The Retrieval-Augmented Generation system works in 4 stages:
+
+### 1. Document Embedding
+
+Documents are embedded using:
+
+```text
+nomic-embed-text
+```
+
+via Ollama.
+
+---
+
+### 2. Context Retrieval
+
+The query embedding is matched against stored vectors using HNSW search.
+
+---
+
+### 3. Prompt Construction
+
+Relevant contexts are merged into a structured prompt.
+
+---
+
+### 4. AI Generation
+
+The prompt is sent to:
+
+```text
+llama3.2
+```
+
+for grounded answer generation.
+
+---
+
+# 📊 Vector Visualization
+
+The frontend includes a real-time semantic space visualizer.
+
+Features:
+
+* PCA dimensionality reduction
+* 2D scatter plot
+* Query highlighting
+* Semantic clustering
+* Distance mapping
+* Interactive search exploration
+
+This allows users to visually understand how embeddings cluster in semantic space.
+
+---
+
+# 🖥️ Frontend
+
+Built using:
 
 * HTML
 * CSS
 * JavaScript
 * Canvas API
 
----
+### Frontend Modules
 
-## 🧠 System Architecture
-
-```text
-User Query
-     ↓
-Embedding Generation
-     ↓
-HNSW Vector Search
-     ↓
-Top-K Context Retrieval
-     ↓
-LLM Prompt Construction
-     ↓
-AI Response Generation
-```
+| Module    | Purpose                         |
+| --------- | ------------------------------- |
+| Search    | Semantic vector querying        |
+| Documents | Document insertion & management |
+| Ask AI    | RAG-powered AI assistant        |
+| Benchmark | Algorithm comparison            |
 
 ---
 
-## 📡 API Endpoints
+# ⚙️ Tech Stack
 
-| Endpoint      | Description                 |
-| ------------- | --------------------------- |
-| `/insert`     | Insert semantic vectors     |
-| `/search`     | Vector similarity search    |
-| `/doc/insert` | Insert RAG documents        |
-| `/doc/list`   | List stored documents       |
-| `/doc/search` | Retrieve relevant contexts  |
-| `/doc/ask`    | AI-powered RAG querying     |
-| `/benchmark`  | Benchmark search algorithms |
-| `/status`     | Backend + Ollama health     |
-| `/hnsw-info`  | Vector DB statistics        |
+## Backend
+
+* Python
+* FastAPI
+* hnswlib
+* NumPy
+
+## AI / ML
+
+* Ollama
+* `nomic-embed-text`
+* `llama3.2`
+
+## Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+* Canvas API
 
 ---
 
-## ⚙️ Installation
+# 📡 API Endpoints
 
-### Clone Repository
+## Vector APIs
+
+| Method   | Endpoint       | Description              |
+| -------- | -------------- | ------------------------ |
+| `POST`   | `/insert`      | Insert semantic vectors  |
+| `GET`    | `/search`      | Vector similarity search |
+| `GET`    | `/items`       | Retrieve all vectors     |
+| `DELETE` | `/delete/{id}` | Delete vector            |
+| `GET`    | `/benchmark`   | Benchmark algorithms     |
+| `GET`    | `/hnsw-info`   | HNSW graph stats         |
+| `GET`    | `/status`      | Backend & Ollama status  |
+
+---
+
+## Document & RAG APIs
+
+| Method   | Endpoint           | Description                |
+| -------- | ------------------ | -------------------------- |
+| `POST`   | `/doc/insert`      | Insert documents           |
+| `GET`    | `/doc/list`        | List documents             |
+| `DELETE` | `/doc/delete/{id}` | Delete document            |
+| `POST`   | `/doc/search`      | Retrieve semantic contexts |
+| `POST`   | `/doc/ask`         | AI-powered RAG querying    |
+
+---
+
+# 🚀 Installation
+
+## 1. Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/semanticvault.git
+git clone https://github.com/yourusername/SemanticVault.git
 
-cd semanticvault
+cd SemanticVault
 ```
 
 ---
 
-### Create Virtual Environment
+## 2. Create Virtual Environment
 
 ```bash
 python3 -m venv venv
@@ -140,7 +263,7 @@ source venv/bin/activate
 
 ---
 
-### Install Dependencies
+## 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -148,7 +271,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🤖 Install Ollama
+# 🤖 Install Ollama
 
 Install [Ollama](https://ollama.com?utm_source=chatgpt.com)
 
@@ -168,7 +291,7 @@ ollama serve
 
 ---
 
-## ▶️ Run Project
+# ▶️ Run Project
 
 ```bash
 uvicorn app:app --reload
@@ -182,58 +305,98 @@ http://127.0.0.1:8000
 
 ---
 
-## 📊 Algorithms Implemented
-
-* HNSW (Hierarchical Navigable Small World)
-* Cosine Similarity Search
-* KD-Tree Benchmarking
-* Brute Force Similarity Search
-* PCA Dimensionality Reduction
-
----
-
-## 🧪 Skills Demonstrated
-
-* Full-stack AI application development
-* Vector databases & ANN search
-* Retrieval-Augmented Generation (RAG)
-* LLM integration
-* Embedding systems
-* REST API architecture
-* Real-time visualization
-* Error handling & fallback systems
-* Semantic search engineering
-
----
-
-## 🔮 Future Improvements
-
-* PDF ingestion
-* Multi-user authentication
-* Persistent vector storage
-* Streaming AI responses
-* Hybrid search (BM25 + vectors)
-* GPU acceleration
-* Chat history memory
-* Docker deployment
-
----
-
-## 📸 Preview
+# 📂 Project Structure
 
 ```text
-AI Semantic Search + Vector Visualization + Local RAG Assistant
+SemanticVault/
+│
+├── app.py
+├── index.html
+├── requirements.txt
+├── preview.png
+└── README.md
 ```
 
 ---
 
-## 📄 License
+# 🧪 Skills Demonstrated
+
+* Full-stack development
+* AI engineering
+* Vector databases
+* ANN search algorithms
+* Retrieval-Augmented Generation
+* LLM integration
+* REST API design
+* Semantic search systems
+* PCA visualization
+* Backend architecture
+* Error handling & fallbacks
+
+---
+
+# 🔬 Algorithms Used
+
+| Algorithm   | Purpose                             |
+| ----------- | ----------------------------------- |
+| HNSW        | Approximate nearest neighbor search |
+| KD-Tree     | Exact low-dimensional retrieval     |
+| Brute Force | Baseline vector comparison          |
+| PCA         | Dimensionality reduction            |
+
+---
+
+# 🔮 Future Improvements
+
+* PDF ingestion
+* Persistent vector storage
+* Authentication system
+* Streaming AI responses
+* GPU acceleration
+* Multi-user workspaces
+* Hybrid search (BM25 + vectors)
+* Docker deployment
+* Cloud deployment
+* Chat memory
+
+---
+
+# 📈 Benchmarking
+
+SemanticVault supports algorithm benchmarking between:
+
+* HNSW
+* KD-Tree
+* Brute Force
+
+allowing comparison of:
+
+* latency
+* retrieval efficiency
+* scalability
+
+---
+
+# 🎯 Project Goals
+
+This project was built to deeply understand:
+
+* how vector databases work
+* semantic search systems
+* RAG pipelines
+* local AI infrastructure
+* ANN search algorithms
+* production AI backend architecture
+
+---
+
+# 📄 License
 
 MIT License
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 Swayam Gupta
 
