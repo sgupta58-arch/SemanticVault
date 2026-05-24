@@ -1,0 +1,91 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env files / secrets
+.env
+.env.*
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Node (if added later)
+node_modules/
+npm-debug.log
+
+# Build outputs
+pip-wheel-metadata/
+__pypackages__/
+
+# Local python environment files
+python-env/
+
+# coverage, profiling
+coverage.xml
+
+# Misc
+.cache/
+.terraform/
+
+# hnswlib index files (if you store locally)
+index.bin
+index_*.bin
+
+# Ignore generated frontend build (if you add one later)
+build/
+public/
+
+# Lockfiles
+Pipfile.lock
+poetry.lock
+
+# Visual artifacts
+.sass-cache/
