@@ -2,7 +2,7 @@
 
 > Full-stack AI-powered semantic search and Retrieval-Augmented Generation (RAG) platform built with FastAPI, HNSW vector search, Ollama LLMs, and interactive vector visualization.
 
-![SemanticVault Preview](./preview.png)
+![SemanticVault Preview](./semanticVault.png)
 
 ---
 
